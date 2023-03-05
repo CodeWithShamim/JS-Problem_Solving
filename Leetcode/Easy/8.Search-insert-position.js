@@ -4,9 +4,9 @@ var searchInsert = function (nums, target) {
   let mid;
   mid = Math.floor((l + r) / 2);
 
-  while (l <= r) {
+  while (l < r) {
     if (nums[mid] === target) return mid;
-    else if (nums[mid] > target) r = mid - 1;
+    else if (nums[mid] > target) r = mid;
     else l = mid + 1;
 
     mid = Math.floor((l + r) / 2);
