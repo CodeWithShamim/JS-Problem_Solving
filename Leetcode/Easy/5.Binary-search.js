@@ -1,14 +1,12 @@
 var search = function (nums, target) {
-  const sortedArray = nums.sort((a, b) => a - b);
   let start = 0;
-  let end = sortedArray.length - 1;
+  let end = nums.length - 1;
 
   while (start <= end) {
     const mid = Math.floor((start + end) / 2);
-    const midValue = sortedArray[mid];
 
-    if (target === midValue) return nums.indexOf(midValue);
-    else if (midValue > target) {
+    if (target === nums[mid]) return mid;
+    else if (nums[mid] > target) {
       end = mid - 1;
     } else {
       start = mid + 1;
