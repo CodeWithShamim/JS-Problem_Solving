@@ -1,20 +1,27 @@
 var reverseOnlyLetters = function (s) {
-  let res = [...s];
-  for (let i = 0, j = s.length - 1; i < j; i++, j--) {
-    if (/[^a-zA-Z]/.test(s[i])) {
-      i++;
-    }
-    if (/[^a-zA-Z]/.test(s[j])) {
-      j--;
-    }
+  s = s.split("");
+  const regex = /[a-zA-Z]/g;
 
-    const temp = res[i];
-    res[i] = res[j];
-    res[j] = temp;
+  for (let i = 0, j = s.length - 1; i < j; ) {
+    if (!s[i].match(regex)) {
+      i++;
+      continue;
+    };
+    if (!s[j].match(regex)) {
+      j--;
+      continue;
+    };
+
+    const temp = s[i];
+    s[i] = s[j];
+    s[j] = temp;
+    i++;
+    j--;
   }
 
-  return res.join("");
+  return s.join("");
 };
 
 console.log(reverseOnlyLetters("a-bC-dEf-ghIj"));
 console.log(reverseOnlyLetters("ab-cd"));
+console.log(reverseOnlyLetters("7_28"));
